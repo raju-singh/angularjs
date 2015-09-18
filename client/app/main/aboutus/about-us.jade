@@ -1,0 +1,21 @@
+.container
+  h2 About Us
+  div.table-responsive         
+      table.table(ng-controller="aboutUs") 
+        thead
+          tr
+            th 
+                h5 Employees Details
+          tr
+            th Firstname
+            th Lastname
+            th Age
+            th City
+            th Country
+        tbody
+          tr(ng-repeat="detail in details")
+            td {{detail.firstName}}
+            td {{detail.lastName}}
+            td {{detail.age}}
+            td {{detail.city}}
+            td {{detail.country}}

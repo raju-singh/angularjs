@@ -1,0 +1,34 @@
+{
+  "name": "nodejs",
+  "version": "0.0.0",
+  "authors": [
+    "raju_singh <rajumsinghk12@gmail.com>"
+  ],
+  "moduleType": [
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/filez",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.5",
+    "angular-route": "~1.4.5",
+    "angular-resource": "~1.4.5",
+    "toaster": "~0.4.15",
+    "angular-animate": "~1.4.5",
+    "angular-ui": "~0.4.0",
+    "angular-touch": "~1.4.5",
+    "angular-sanitize": "~1.4.5",
+    "angular-carousel": "~0.3.13",
+    "ui-bootstrap": "~0.13.4"
+  }
+}

@@ -1,0 +1,16 @@
+$(document).ready(function(){
+    $("#slideshow").carousel({
+        interval:500,
+        pause:false,
+        wrap:true,
+    });
+    $(".item1").click(function(){
+        $("#slideshow").carousel(0);
+    });
+    $(".item2").click(function(){
+        $("#slideshow").carousel(1);
+    });
+    $(".item3").click(function(){
+        $("#slideshow").carousel(2);
+    });
+});

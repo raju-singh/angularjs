@@ -1,0 +1,19 @@
+div.sliderss
+    .col-md-4
+        img.img-circle(src="{{slide.image}}", data-toggle="modal", data-target="#{{slide.title}}", height="200px", width="250px")
+        
+    div.modal.fade(id="{{slide.title}}", role="dialog")
+        div.modal-dialog
+          div.modal-content
+            div.modal-header
+              button.close(data-dismiss="modal") &times;
+              h4.modal-title {{slide.title}}
+            div.modal-body(ng-controller="itemCtrl")
+               img.modal-image(src="{{slide.image}}", height="250px", width="400px")
+               ol(ng-repeat="item in items")
+                    a(href="#", ng-click="$event.preventDefault(); selected.item = item") {{item}}
+               h6 Selected: <b>{{ selected.item }} 
+            div.modal-footer
+                button.btn.btn-primary(data-dismiss="modal", ng-click="ok(selected.item)") Ok    
+                button.btn.btn-primary(data-dismiss="modal") Close
+    div(ng-show="selected.item") Selection from a modal: {{ selected }}

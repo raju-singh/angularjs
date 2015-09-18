@@ -1,0 +1,9 @@
+.container
+    .jumbotron(ng-controller="productCtrl")
+        .row
+            .col-md-8
+                  div#slideshow(data-role="listbox")
+                      carousel(interval="myInterval", no-wrap="noWrapSlides")
+                          img(ng-repeat="slide in slides", ng-src="{{slide.image}}", height="200px", width="200px")
+            .col-md-4
+                p cfsdfdsfd
