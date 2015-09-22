@@ -26,7 +26,7 @@ angular.module('myApp')
         };
 
          $scope.ok = function () {
-           $scope.selected.items;
+           $scope.selected.items[0];
             };
     })
     .directive('slide', function(){

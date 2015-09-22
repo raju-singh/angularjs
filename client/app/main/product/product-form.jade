@@ -1,0 +1,22 @@
+.container
+    .jumbotron
+        .row(ng-controller="productAddctrl")
+            form.form-horizontal(novalidate, role="form")
+              div.form-group
+                label Product:
+                    input(type="text", ng-model="product")
+              div.form-group
+                label Product Id:
+                    input(type="text", ng-model="productId")
+              div.form-group
+                label Prodyct Description:
+                    input(type="text", ng-model="productDesc" )
+              div.form-group
+                label Product Image:
+                    input(type="file", ng-model="image", accept="image/*")
+              div.form-group
+                label Product Price:
+                    input(ng-model="prdoductPrice")
+              div.form-group
+                button.btn.btn-primary(ng-click="product_cancel()") Cancel 
+                button.btn.btn-primary(ng-click="add_product()") Save

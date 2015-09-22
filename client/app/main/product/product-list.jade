@@ -1,0 +1,22 @@
+.jumbotron
+        .row
+            .col-lg-12
+                table.table.table-striped
+                    thead
+                        tr
+                            th Product Name
+                            th Product Id
+                            th Description
+                            th Price
+                            th Product Image
+                            th Edit
+                    tbody
+                        tr(ng-repeat="product in products")
+                            td {{product.productName}}
+                            td {{product.productId}}
+                            td {{product.productDesc}}
+                            td {{product.price | currency}}
+                            td 
+                                img(src="{{product.image}}", height="100px", width="100px")
+                            td 
+                                a(hrrf="/product/{{product.productId}}/edit") edit

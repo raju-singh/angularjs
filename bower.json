@@ -29,6 +29,7 @@
     "angular-touch": "~1.4.5",
     "angular-sanitize": "~1.4.5",
     "angular-carousel": "~0.3.13",
-    "ui-bootstrap": "~0.13.4"
+    "ui-bootstrap": "~0.13.4",
+    "bootstrap": "~3.3.5"
   }
 }

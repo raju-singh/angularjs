@@ -6,7 +6,8 @@
         .when('/contact', {templateUrl: '/partials/main/contact', controller: 'mainCtrl'})
         .when('/about-us', {templateUrl: '/partials/main/aboutus/about-us', controller: 'mainCtrl'})
         .when('/', {templateUrl: '/partials/main/main', controller: 'mainCtrl'})
-        .when('/product', {templateUrl: '/partials/main/product/product', controller:'productCtrl'});
+        .when('/product', {templateUrl: '/partials/main/product/product', controller:'productCtrl'})
+        .when('/product/add-product', {templateUrl: '/partials/main/product/product-form', controller:'productCtrl'});
 })
  .controller('mainCtrl', function($scope){
    $scope.myApp = 'Angular World'; 

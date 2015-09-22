@@ -1,9 +1,27 @@
-.container
-    .jumbotron(ng-controller="productCtrl")
-        .row
-            .col-md-8
-                  div#slideshow(data-role="listbox")
-                      carousel(interval="myInterval", no-wrap="noWrapSlides")
-                          img(ng-repeat="slide in slides", ng-src="{{slide.image}}", height="200px", width="200px")
-            .col-md-4
-                p cfsdfdsfd
+.container(ng-controller="productCtrl")
+    div(ng-include="'/partials/main/product/product-list'")
+    // a.icon-plus-sign(href="product/add-product") Add Product
+    .conatiner
+     .jumbotron 
+        button.btn.btn-primary(data-toggle="collapse" data-target="#form-add") Add Product Items
+        br
+        br
+        br
+        form#form-add.form-horizontal.collapse(novalidate, role="form")
+              div.form-group
+                label Product:
+                    input(type="text", ng-model="product.productName")
+              div.form-group
+                label Product Id:
+                    input(type="text", ng-model="product.productId")
+              div.form-group
+                label Prodyct Description:
+                    input(type="text", ng-model="product.productDesc" )
+              div.form-group
+                label Product Image:
+                    input(type="file", ng-model="product.image", accept="/images/*")
+              div.form-group
+                label Product Price:
+                    input(ng-model="product.price")
+              div.form-group
+                button.btn.btn-primary(type="submit",  ng-click="addProduct()") Save

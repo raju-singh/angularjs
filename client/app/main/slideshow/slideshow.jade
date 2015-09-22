@@ -7,3 +7,6 @@
         //a.arrow.next(ng-click="slide_next()") 
       br
       p(style="text-align:center;") Click on the image to see full image..
+      
+      h6 Selected: <b>{{ selected.item }} 
+      div(ng-show="selected.item") Selection from a modal: {{ selected }}

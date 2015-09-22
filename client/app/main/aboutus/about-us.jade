@@ -13,7 +13,7 @@
             th City
             th Country
         tbody
-          tr(ng-repeat="detail in details")
+          tr(ng-repeat="detail in details | orderBy:'firstName'")
             td {{detail.firstName}}
             td {{detail.lastName}}
             td {{detail.age}}
