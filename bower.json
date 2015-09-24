@@ -30,6 +30,7 @@
     "angular-sanitize": "~1.4.5",
     "angular-carousel": "~0.3.13",
     "ui-bootstrap": "~0.13.4",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "ng-flow": "~2.6.1"
   }
 }

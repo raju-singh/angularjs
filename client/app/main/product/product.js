@@ -1,26 +1,23 @@
 /*global angular*/
 angular.module('myApp')
     .controller('productCtrl', function($scope){
-      $scope.products = '';
-      $scope.addProduct = function(){
-        
-			          $scope.products.push({productName : $scope.productName,
-                                        productId : $scope.productId,
-                                        productDesc : $scope.productDesc,
-			                                  price : $scope.price,
-			                                  image : $scope.image
-			                                });
-			          var dataObj = {
-                      					'productName' : $scope.productName,
-                      					'productId' : $scope.productId,
-                      					'productDesc' : $scope.productDesc,
-                      					'price' : $scope.price,
-                      					'image': $scope.image
-                      				  };
-      }
-    $scope.products = [{productName:'Mobile Phone', productId: '1', productDesc: 'Mobile Phone', price:"15", image:'/images/img_chania.jpg'},
-                        {productName:'Mobile Phone', productId: '1', productDesc: 'Mobile Phone', price:"15", image:'/images/img_chania.jpg'},
-                        {productName:'Mobile Phone', productId: '1', productDesc: 'Mobile Phone', price:"15", image:'/images/img_chania.jpg'},
-                        {productName:'Mobile Phone', productId: '1', productDesc: 'Mobile Phone', price:"15", image:'/images/img_chania.jpg'}];
+      $scope.products = [{name: 'Lumia', pid: '1', desc:'New in Market', price: '100', upvotes:'5'}];
       
+      $scope.addproduct = function(){
+        if($scope.pid != ''){
+            $scope.products.push({
+                name : $scope.pName, pid: $scope.pid, desc: $scope.pDesc, price : $scope.pPrice, upvotes: 0
+              });
+            $scope.pName = '';
+            $scope.pid = '';
+            $scope.pDesc = '';
+            $scope.pPrice = '';
+        }
+      };
+      $scope.incrementUpvotes = function(product) {
+        product.upvotes ++;
+      };
+      $scope.decrementUpvotes = function(product){
+        product.upvotes --;
+      }
 });
