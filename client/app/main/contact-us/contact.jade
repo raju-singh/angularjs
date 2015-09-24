@@ -1,0 +1,32 @@
+.container
+    .jumbotron
+       .row
+        .col-lg-6
+            p.
+                Fill your details in the attached form at the right side to contact us. Reply will be sent to you as soon as possible.
+                Thank you.
+        .col-lg-6(ng-controller="contactUs")
+            form.css-form.contact-us(novalidate, role="form")
+              div.form-group
+                label First Name:
+                    input.form-control(type="text", ng-model="firstName")
+              div.form-group
+                label Last Name:
+                    input.form-control(type="text", ng-model="lastName")
+              div.form-group
+                label Organisation Name:
+                    input.form-control(type="text")
+              div.form-group
+                label Email address:
+                    input.form-control(type="email", ng-model="email")
+              div.form-group
+                label Date of Birth:
+                    datepicker.form-control(ng-model="date")
+              div.form-group
+                label Address:
+                    input.form-control(type="address")
+              div.form-group
+                label Send me a copy:
+                    input(type="checkbox")
+              div.form-group
+                button.btn.btn-primary(ng-click="contact_send()") Submit

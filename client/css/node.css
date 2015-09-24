@@ -43,3 +43,21 @@ div .login-form{
   width:100%;
   /*height:100%;
 */}
+.sortorder:after {
+    content: '\25b2';
+  }
+  .sortorder.reverse:after {
+    content: '\25bc';
+  }
+.increment{
+    background-image: url('../images/incr.png');
+    padding-left: 17px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.decrement{
+    background-image: url('../images/decr.png');
+    padding-right: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}

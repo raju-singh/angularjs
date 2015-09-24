@@ -11,13 +11,14 @@ block main-content
           li
             a(href="/product") Product
           li
-            a(href="/about-us") About Us
+            a(href="/filter") Filter use
           li
             a(href="/contact") Contact Us
           li
         div.login-form(ng-include="'/partials/main/user/account'")
   section.content
     div(ng-view)
+    h2= mongoMessage
   foooter.container.text-center
    p#footer &copy; 2015 
     a(href="https://nodejs-raju-singh-3.c9.io/") Nodejs-raju-singh-3.c9.io
