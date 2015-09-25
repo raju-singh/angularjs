@@ -20,4 +20,5 @@ angular.module('myApp')
       $scope.decrementUpvotes = function(product){
         product.upvotes --;
       }
+      //$scope.name = name;
 });
