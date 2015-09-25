@@ -1,0 +1,26 @@
+.container(ng-controller="courseCtrl")
+    .jumbotron
+        table.table.table-hover
+            thead
+                tr
+                    th Course Name
+                    th Published Date
+                    th Language 
+            tbody
+                tr(ng-repeat="course in courses | orderBy : 'name'")
+                    th {{course.name}}
+                    th {{course.published}}
+                    th {{course.language}}
+        button.btn.btn-primary(data-toggle="collapse" data-target="#form-add") Add Course
+        form#form-add.form-horizontal.collapse(novalidate, role="form") 
+            div.form-group
+                p Course Name : 
+                    input(type="text", ng-model="name")
+              div.form-group
+                p Published Date
+                    input(type="text", ng-model="published")
+              div.form-group
+                p Language:
+                    input(ng-model="language")
+              button.btn.btn-primary(type="submit",  ng-click="save()") Save Course
+            
