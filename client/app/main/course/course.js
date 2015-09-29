@@ -1,24 +1,15 @@
 /*global angular*/
+
+/*global id*/
 angular.module('myApp')
     .controller('courseCtrl', function($scope, mvCourse){
-        $scope.courses = mvCourse.query();
-        $scope.save = function(){
-            if($scope.name != '') return;
-            
-            var course = new mvCourse({ name: $scope.name, published :$scope.published, completed: false, language: $scope.language});
+        $scope.courses = mvCourse.index();
+
+        $scope.sortOptions = [{value:'name' , text:'Sort by Course'},
+                                {value:'language', text:'Sort By Language'}];
+        $scope.sortOrder = $scope.sortOptions[0].value;
         
-                course.$save(function(){
-                  $scope.courses.push(course)
-                  $scope.name = '';
-                  $scope.published = '';
-                  $scope.language = '';
-                });
-                
-            if(course.$save){
-                alert('FIne');
-            }
-            else{
-                alert('Failure');
-            }
-        };
+    })
+    .controller('showCourse',  function($scope, $routeParams, mvCourse){
+         $scope.course = mvCourse.show({ id: $routeParams.id });
     });
