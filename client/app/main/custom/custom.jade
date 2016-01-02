@@ -1,0 +1,27 @@
+.container(ng-controller="customCtrl")
+  form
+    .col-xs-4
+      input.form-control(type="number", ng-model="num")
+    .col-xs-4
+      button.btn.btn-primary(ng-click="submitNumber(num)") Submit
+      button.btn.btn-primary(ng-click="reset()") Reset
+  div(ng-repeat="tweet in twitterResult track by $index")
+    span {{tweet}}
+  
+  .col-lg-12
+    .jumbotron
+      div.row
+        h6 {{data.scopePropertyAsUsual}}
+        h2 Demo Value : {{demo}}
+        h3 Demo Constant : {{demoConstant}}
+      div.row
+        my-custom-element(name="{{ratings.name}}", street="ratings.street", click="clickData()")
+  .col-lg-12
+    .jumbotron
+      div(ng-repeat="image in images")  
+        user(username="huseyinbabal", avatar="{{image.src}}", reputation="8012")
+      img(ng-repeat="image in images", src="{{image.src}}", style="margin:10px;") 
+      div(link-directive, text="Lovely") Read More...
+      div(link-directive, text="Wonmderful") Read More...
+      a(link-directive, text="Awesome") Read More...
+      

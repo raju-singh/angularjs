@@ -1,0 +1,55 @@
+.container
+    .col-lg-12
+        .jumbotron
+            h2 Autocomplete User Search 
+            .col-lg-6
+                .form
+                    input.form-control(type="text", auto-complete, ng-model="searchUser")
+            .col-lg-12.row    
+                div.table-responsive(ng-if="emails.length>0")
+                    table.table.table-hover
+                        thead
+                            tr
+                                td Email
+                                td Username
+                                td LastName
+                        tbody
+                            tr(ng-repeat="email in emails")
+                                td {{email.email}}
+                                td {{email.firstName}}
+                                td {{email.lastName}}
+    .col-lg-12
+        .jumbotron
+            h3 GitHub User repos searchi
+            .col-lg-12
+                auto-focuss(items="items", prompt="Search User", title= "{{items.login}}", model="items.login", userpage="gotoUserpage(items.id)" mydirect="reDirect()" select="onItemSelected()")
+            //.row
+                .col-lg-12
+                    table.table.table-striped
+                        thead
+                            tr
+                                td UserName
+                                td Avatar
+                                td Repository
+                        tbody
+                            tr(ng-repeat="item in items")
+                                td {{item.login}}
+                                td 
+                                    img.img-circle(src="{{item.avatar_url}}", height="70px", width="70px")
+                                td {{item.repos_url}}
+            .row
+                .col-lg-12
+                    h4 Angular Repository on GitHub
+                    div.col-md-9
+                        div(ng-repeat="repo in repos")
+                            a(href="{{repo.html_url}}", target="_blank")  {{repo.name}}
+    .col-lg-12
+        .jumbotron
+            h3 Tweet search
+            .col-lg-9
+                .form
+                    .col-lg-6
+                        input.form-control(type="text", ng-model="tweetSearch", placeholder="Twitter Search")
+                    .col-lg-3
+                        button.btn.btn-primary(ng-click="searchTwitter()") Search
+        
