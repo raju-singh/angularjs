@@ -1,5 +1,5 @@
 /*global angular*/
-angular.module('myApp', ['ngCookies', 'ngStorage','ngResource', 'ngRoute', 'ngFileUpload', 'ngAnimate', 'ui.bootstrap', 'ng-fusioncharts', 
+angular.module('myApp', ['ngCookies', 'ngStorage','ngResource', 'ngRoute', 'ngFileUpload', 'ngAnimate', 'ui.bootstrap', 
                     'mgcrea.ngStrap', 'angularUtils.directives.dirPagination', 'angular-jwt'])
     .config(function($routeProvider, $locationProvider, $httpProvider) {
     $locationProvider.html5Mode({ enabled: true,
