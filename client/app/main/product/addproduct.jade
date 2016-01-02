@@ -1,0 +1,23 @@
+div
+   div.modal-body
+    .col-md-12
+      form.form-horizontal(novalidate, role="form")
+            .form-group
+                input.form-control(type="text", ng-model="product.name", placeholder="Product Name")
+            .form-group
+                input.form-control(type="text", ng-model="product.pid", placeholder="Product Id")
+            .form-group
+                input.form-control(type="text", ng-model="product.details", placeholder="Prodyct Description")
+            .form-group
+                input.form-control(ng-model="product.price", placeholder="Product Price")
+            .form-group
+                //input.form-control(type="file", ng-model="fileImage")
+        
+                button(ngf-select="uploadFile($files)", accept="image/*") Select Image
+                ul
+                    li(ng-repeat="f in files", style="font:smaller")
+                        img.img-circle(ngf-thumbnail="f")
+            .form-group
+                button.btn.btn-primary(type="submit",  ng-click="addproduct()") Save
+   div.modal-footer
+      button.btn.btn-primary(type="button", ng-click="cancel()") Close

@@ -1,0 +1,25 @@
+.container(ng-controller="addCourse")
+    .jumbotron
+        form.form-horizontal(ng-submit="addCourse(created)")
+            .form-group
+                label.control-label.col-sm-2 Course Name : 
+                .col-sm-6
+                    input.form-control(type="text", ng-model="course.name")
+            .form-group
+                label.control-label.col-sm-2 Tag :  
+                .col-sm-3
+                    input.form-control(type="text", ng-model="course.language")
+            .form-group
+                label.control-label.col-sm-2 Completed  
+                .col-sm-1
+                    input.form-control(type="checkbox", ng-model="course.completed")
+            .form-group
+                label.control-label.col-sm-2 Created Date : 
+                .col-sm-4
+                    input.form-control(type="date", ng-model="course.created", min-date="date_now")
+            .form-group
+                .col-sm-4
+                .col-sm-8
+                    button.btn.btn-primary(style="margin:10px;") Save Course
+                    a.btn.btn-primary(ng-click="reset()", style="margin:10px;") Reset
+                    a.btn.btn-primary(ng-click="cancel()", style="margin:10px;") Cancel

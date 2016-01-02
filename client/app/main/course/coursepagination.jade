@@ -1,0 +1,49 @@
+.container(ng-controller="coursePager")
+    .jumbotron
+        a(href="/add/course")
+            span.glyphicon.glyphicon-plus  Add Course
+        .col-sm-4(style="float:right;")
+            form.form-horizontal
+                .form-group
+                    label.control-label Number of course per page
+                    input.form-control(style="width:25%;", ng-model="pageSize")
+           
+        table.table.table-hover
+            thead
+                tr
+                    th Course Name
+                    th Published Date
+                    th Tag 
+                    th Edit
+                    th Delete
+            tbody
+                tr(ng-show="courses.length <= 0")
+                    td(colspan="5", style="text-align:center;") Loading  
+                        i.fa.fa-spinner.fa-spin
+                tr(ng-repeat="course in courses | pagination: curPage * pageSize | limitTo: pageSize")
+                    th 
+                        a(href="/course/{{course._id}}") {{course.name}}
+                    th {{course.created | date}}
+                    th {{course.language}}
+                    th 
+                        button.btn
+                            span.glyphicon.glyphicon-pencil
+                            a.btn(href="/course/{{course._id}}/edit") edit
+                    th 
+                        button.btn
+                            a(href= "/course/{{course._id}}/delete", ng-click="delete()") delete
+            tfoot
+                td
+                    div.pagination.pagination-centered(ng-show="courses.length")
+                        ul.pagination-controle.pagination
+                            li
+                                button.btn.btn-primary(ng-disabled="curPage == 0", ng-click="curPage=curPage-1") « Prev
+                            li
+                                span Page {{curPage + 1}} of {{ numberOfPages() }}
+                            li
+                                button.btn.btn-primary(ng-disabled="curPage >= courses.length/pageSize - 1", ng-click="curPage = curPage+1") Next »
+
+        .row
+            div(fusioncharts, width="600", height="400", type="column2d", dataSource="{{myChart}}")
+        .row
+            fc-chart(width="600", height="400", fc-chart-type="Column3D", fc-data="{{myChart}}")
