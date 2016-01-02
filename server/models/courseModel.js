@@ -4,16 +4,27 @@ var mongoose = require('mongoose');
  var CourseSchema =  mongoose.Schema({
                                         name: String,
                                         completed: Boolean,
-                                        created:{type: Date, default: Date.now, required:'{PATH} is required!'},
+                                        created:{type: Date, required:'{PATH} is required!'},
                                         language: String
                                       });
 var Course;
 Course = mongoose.model('Course', CourseSchema);
+
+ var ContactSchema =  mongoose.Schema({
+                                        firstName: String,
+                                        lastName: String,
+                                        organisation: String,
+                                        date: {type: Date, required:'{PATH} is required!'},
+                                        address: String,
+                                        sendCopy: Boolean,
+                                      });
+var Contact;
+Contact = mongoose.model('Contact', ContactSchema);
   
 function createdefaultCourses(){
     Course.find({}).exec(function(err, collection){
         if(collection.length === 0){
-      Course.create({name: 'C# for Sociopaths', completed: true, created: new Date('2014-10-01'), language: ['C#']});
+      Course.create({name: 'C# for Sociopaths', completed: true, created:  Date('2014-10-01'), language: ['C#']});
       Course.create({name: 'C# for Non-Sociopaths', completed: true, created: new Date('10/12/2013'), language: ['C#']});
       Course.create({name: 'Super Duper Expert C#', completed: false, created: new Date('2014-10-01T00:00:00Z'), language: ['C#']});
       Course.create({name: 'Visual Basic for Visual Basic Developers', completed: false, created: new Date('7/12/2013'), language: ['VB']});
@@ -33,3 +44,4 @@ function createdefaultCourses(){
 }
 exports.createdefaultCourses = createdefaultCourses;
 console.log(createdefaultCourses);
+

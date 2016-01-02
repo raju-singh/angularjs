@@ -1,27 +1,36 @@
 .container(ng-controller="courseCtrl")
     .jumbotron
-        a(href="/add/course") Add Course
-        
+        a(href="/add/course")
+            span.glyphicon.glyphicon-plus  Add Course
+        h3 There are {{courses.length}} courses here.
         form.form-inline(style="float:right;")
             div.form-group
-              input(ng-model="searchText", placeholder="FIlter")
+              input.form-control(ng-model="searchText.language", placeholder="FIlter by Tag")
             div.form-group
-              select(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
-        table.table.table-hover
-            thead
-                tr
-                    th Course Name
-                    th Published Date
-                    th Tag 
-                    th 
-                        a(href="#") Edit
-            tbody
-                tr(ng-repeat="course in courses | filter: searchText | orderBy : sortOrder")
-                    th 
-                        a(href="/course/{{course._id}}") {{course.name}}
-                    th {{course.created | date}}
-                    th {{course.language}}
-                    th 
-                        a(href="/{{course._id}}/edit") edit
-        
-           
+              select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+        div(infinite-scroll="coursePagination()", infinite-scroll-distance="0.1")
+            table.table.table-hover
+                thead
+                    tr
+                        th Course Name
+                        th Published Date
+                        th Tag 
+                        th Edit
+                        th Delete
+                tbody
+                    tr(ng-repeat="course in courses | filter: searchText | orderBy : sortOrder track by $index")
+                        th 
+                            a(ng-click="showCourse(course, $event)") {{course.name}}
+                        th {{course.created | date}}
+                        th {{course.language}}
+                        th 
+                            a.btn(href="/course/{{course._id}}/edit")
+                                span.glyphicon.glyphicon-pencil
+                                span edit
+                        th 
+                            button.btn
+                                //a(href= "/course/{{course._id}}/delete", ng-click="delete()") delete
+                                a(ng-click="delete(course, $index)") delete
+        .col-lg-12
+            p  Server response { {{courses}} }
+                

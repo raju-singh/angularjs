@@ -4,9 +4,9 @@
   .jumbotron
    form.form-inline(style="float:right;")
     div.form-group
-      input(ng-model="searchText", placeholder="FIlter")
+      input.form-control(ng-model="searchText", placeholder="FIlter")
     div.form-group
-      select(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+      select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
   
   div.table-responsive         
       table.table

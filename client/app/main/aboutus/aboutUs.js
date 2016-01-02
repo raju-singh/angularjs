@@ -2,11 +2,11 @@
 angular.module('myApp')
     .controller('aboutUs', function($scope){
         $scope.details = [{firstName:'John', lastName:'Singh', age:'25', city:'Chennai', country:'India'},
-                            {firstName:'Ronaldo', lastName:'Singhaniya', age:'29', city:'Chennai', country:'India'},
+                            {firstName:'Ronaldo', lastName:'Singhaniya', age:'29', city:'Mumbai', country:'India'},
                             {firstName:'Rooney', lastName:'Sharma', age:'35', city:'Delhi', country:'India'},
-                            {firstName:'Jalal', lastName:'joysen', age:'27', city:'Chennai', country:'India'},
-                            {firstName:'Bhalal', lastName:'patel', age:'42', city:'Chennai', country:'India'},
-                            {firstName:'Galal', lastName:'dalal', age:'29', city:'Chennai', country:'India'},];
+                            {firstName:'Jalal', lastName:'joysen', age:'27', city:'Bangalore', country:'India'},
+                            {firstName:'Bhalal', lastName:'patel', age:'42', city:'Kolkata', country:'India'},
+                            {firstName:'Galal', lastName:'dalal', age:'29', city:'Pune', country:'India'},];
         $scope.predicate = 'firstName';
         $scope.reverse = true;
         $scope.orderName = function(predicate) {
@@ -14,7 +14,7 @@ angular.module('myApp')
             $scope.predicate = predicate;
         };
         $scope.sortOptions = [{value:"firstName", text: "Sort by First Name"},
-                                {value:"city", text:"Sort by City"}];
+                                {value:"age", text:"Sort by Age"}];
         $scope.sortOrder = $scope.sortOptions[0].value; 
         
     })

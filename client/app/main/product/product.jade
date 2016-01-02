@@ -2,6 +2,7 @@
     .jumbotron
         .row
             .col-lg-12
+                a.btn.btn-primary(ng-click="addproduct($event)") Add Product Items
                 table.table.table-striped
                     thead
                         tr
@@ -18,27 +19,9 @@
                             th {{product.price | currency}}
                             th
                                 span.increment(ng-click="incrementUpvotes(product)")
-                                 {{product.upvotes}} 
+                                {{product.upvotes}} 
                                 span.decrement(ng-click="decrementUpvotes(product)") 
-    .jumbotron 
-        button.btn.btn-primary(data-toggle="collapse" data-target="#form-add") Add Product Items
-        br
-        br
-        br
-        form#form-add.form-horizontal.collapse(novalidate, role="form")
-              div.form-group
-                p Product Name : 
-                    input(type="text", ng-model="pName")
-              div.form-group
-                p Product Id:
-                    input(type="text", ng-model="pid")
-              div.form-group
-                p Prodyct Description:
-                    input(type="text", ng-model="pDesc" )
-              div.form-group
-                p Product Price:
-                    input(ng-model="pPrice")
-              div.form-group
-                button.btn.btn-primary(type="submit",  ng-click="addproduct()") Save
+
+        
     
     

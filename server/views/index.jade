@@ -1,22 +1,7 @@
 extends ../includes/layout
 
 block main-content
-  .navbar.navbar-inverse
-    .container-fluid
-      .navbar-header
-        a.navbar-brand(href="/") Cloud Nine9
-        ul.nav.navbar-nav
-          li
-            a(href="/") Home
-          li
-            a(href="/product") Product
-          li
-            a(href="/filter") Filter use
-          li
-            a(href="/contact") Contact Us
-          li
-            a(href="/course") Course
-        div.login-form(ng-include="'/partials/main/user/account'")
+  div.login-form(ng-include="'/partials/main/nav/nav'")
   section.content
     div(ng-view)
     h2= mongoTodo
