@@ -1,0 +1,72 @@
+.conatiner
+
+    .row.profile-header(style="background-color: #19D1A3; color: #fff;")
+        .col-lg-12.col-md-12.col-xs-12
+            h2(style="text-align: center;") Take a moment to provide the information below, so we can personalize your experience
+    .container
+            .row-content
+                .ibox-title
+                    h4 Profile Page
+            .row.col-lg-12
+                .col-lg-3
+                    br
+                    br
+                    br
+                    .jumbotron
+                        img.img-circle(height="150px", width="150px", ng-repeat="f in files", ngf-thumbnail="f")
+                .col-lg-9
+                    br
+                    br
+                    br
+                    .jumbotron
+                        form.form-horizontal(name="profileForm", id="ProfileEditForm" ,novalidate)
+                            fieldset
+                                .form-group(ng-class="{'has-error' : profileForm.username.$invalid && profileForm.username.$dirty}")
+                                    label.col-md-4.control-label(for="username",id="ProfileEditUsername-lbl") Email(Username)
+                                    .col-md-8
+                                        input.form-control(name="username", id="ProfileEditUsernameInput",  type="text", placeholder="john@example.com", ng-model="profileData.email", required)
+                                        span(ng-show="profileForm.username.$error.required" id="ProfileEditUsernameInvalid",class="help-block") Email address required
+                                .form-group(ng-class="{'has-error' :profileForm.fname.$error.required || isSubmitted}")
+                                    label.col-md-4.control-label(for="fname",id="ProfileEditFirstname-lbl") First Name
+                                    .col-md-8
+                                        input.form-control(name="fname", id="ProfileEditFirstnameInput", type="text", placeholder="First Name", ng-model="profileData.firstName", required)
+                                        span(ng-show="profileForm.fname.$error.required || isSubmitted" id="ProfileEditFirstnameInvalid",class="help-block") First Name is required
+                                .form-group(ng-class="{'has-error' : profileForm.lname.$error.required && profileForm.lname.$dirty}")
+                                    label.col-md-4.control-label(for="lname",id="ProfileEditLastname-lbl") Last Name
+                                    .col-md-8
+                                        input.form-control(name="lname", id="ProfileEditLastnameInput", type="text", placeholder="Last Name", ng-model="profileData.lastName",  required)
+                                        span(ng-show="profileForm.lname.$error.required" id="ProfileEditLastnameInvalid", class="help-block") Last Name is required
+                                .form-group
+                                    label.col-md-4.control-label(for="phoneNo",id="ProfileEditphone") Phone Number
+                                    .col-md-8
+                                        input.form-control(name="phoneNo", id="ProfileEditphoneInput", phone-number, type="text", ng-maxlength="14",maxlength="14", placeholder="Phone Number", ng-model="profileData.phoneNumber", required)
+                                        
+                                .form-group
+                                    label.col-md-4.control-label(for="birthday",id="EditProfileBirthday") Birthday
+                                    .col-md-3
+                                        select.form-control(ng-model="SelectedMonth", ng-options="month.id as month.name for month in months", ng-change="noOfDaysInMonth()")
+                                            option(value="") Month
+                                    .col-md-2
+                                        select.form-control(ng-model="SelectedDay", ng-options="day for day in days  | limitTo:noDays")
+                                            option(value="") Day
+                                    .col-md-2
+                                        select.form-control(ng-model="SelectedYear", ng-options="year for year in years", ng-change="noOfDaysInMonth()")
+                                            option(value="") Year
+                                .form-group
+                                    label.col-md-4.control-label(for="avatar",id="ProfileEditavatar-lbl") Avatar
+                                    .col-md-4(id="ProfileEditavatarInput")
+                                        button(ngf-select="uploadFile($files)", accept="image/*") Select Image
+                                        input.form-control(name="avatarsrc", type="hidden", placeholder="Avatar", ng-model="avatarsrc")
+                                    .col-md-4
+                                        div(id="dropzoneouterdiv")
+                                            div(dropzone='dropzoneConfig' class="dropzone" id="dropzone")
+                                .form-group
+                                    label.col-md-4.control-label(for="password",id="EditProfilePassword-lbl") Password
+                                    .col-md-8
+                                        input.form-control(name="password", id="EditProfilePasswordInput", type="password",placeholder="********", ng-model="profileData.password", required)
+                                .form-group
+                                    .col-md-6
+                                        .col-md-3
+                                            button.btn.btn-primary(type="button", ng-click="cancel()") Reset
+                                        .col-md-3
+                                            button.btn.btn-success(id="EditProfile-submit",ng-click="updateUser()") Submit

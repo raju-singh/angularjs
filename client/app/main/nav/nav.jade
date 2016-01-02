@@ -1,0 +1,20 @@
+nav.navbar.navbar-inverse(ng-controller="menuCtrl")
+  div.container-fluid
+    div.navbar-header
+      a.navbar-brand(href="#") Cloud Nine9
+    div
+      ul.nav.navbar-nav
+        li(ng-repeat="menu in menus", ng-class="{active : isActive(menu.url)}", ng-if="identity.isAuthenticated()")
+            a(href="{{menu.url}}") {{menu.item}}
+      ul.nav.navbar-nav.navbar-right
+        li(ng-if="identity.isAuthenticated()")
+          a(href="/profile") Hi {{identity.currentUser.email}}
+        li(ng-if="!identity.isAuthenticated()")
+          a(href="/login") LogIN 
+            span.glyphicon.glyphicon-log-in
+        li(ng-if="!identity.isAuthenticated()")
+          a(href="/register") SignUp 
+            span.glyphicon.glyphicon-user
+        li(ng-if="identity.isAuthenticated()")
+          a(href="/", ng-click="logout()") LogOut 
+            span.glyphicon.glyphicon-log-out
