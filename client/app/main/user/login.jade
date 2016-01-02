@@ -1,0 +1,16 @@
+.container
+    .row.col-md-12
+        .panel.panel-default.col.md-6
+            .panel-heading
+                h2.text-center Login
+            .panel-body
+                form.form-horizontal(ng-controller="loginCtrl", name="loginForm")
+                    .col-md-4.col-md-push-4
+                        .form-group
+                            input.form-control.input-lg(type="email", ng-model="email", placeholder="Email")
+                        .form-group
+                            input.form-control.input-lg(type="password", ng-model="password", placeholder="Password")
+                        .form-group
+                            button.btn-lg.btn-block.btn-success.btn(ng-click="signIn()" ng-disabled="loginForm.$invalid") LogIn
+                            
+                    
