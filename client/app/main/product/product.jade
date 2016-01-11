@@ -1,7 +1,9 @@
 .container(ng-controller="productCtrl")
+    div.page-header
+        h2 Product
     .jumbotron
         .row
-            .col-lg-12
+            .col-lg-12.well
                 a.btn.btn-primary(ng-click="addproduct($event)") Add Product Items
                 table.table.table-striped
                     thead

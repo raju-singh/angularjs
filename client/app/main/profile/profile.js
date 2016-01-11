@@ -15,7 +15,7 @@
             function readUser(){
                userService.getUser({id:currentId}).$promise.then(function(result){
                   if(result){
-                      console.log(result);
+                      //console.log(result);
                       $scope.profileData = result;
                       var year = $scope.profileData.attributes.birthday;
                      

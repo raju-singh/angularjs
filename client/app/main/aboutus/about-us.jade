@@ -1,54 +1,59 @@
-.container(ng-controller="aboutUs") 
- .jumbotron
-  h2 Filter use
-  .jumbotron
-   form.form-inline(style="float:right;")
-    div.form-group
-      input.form-control(ng-model="searchText", placeholder="FIlter")
-    div.form-group
-      select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+.container(ng-controller="aboutUs")
+  div.page-header
+        h2 Filter Custom & In-Built
+  .row
+    form.well.form-inline(style="float:right;")
+      div.form-group
+        input.form-control(ng-model="searchText", placeholder="FIlter")
+      div.form-group
+        select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
   
-  div.table-responsive         
-      table.table
-        thead
-          tr
-            th 
+  .row
+    .col-lg-12    
+      div.table-responsive.well         
+        table.table
+          thead
+            tr
+              th 
                 h5 Employees Details
-          tr
-            th Firstname
-            th Lastname
-            th Age
-            th City
-            th Country
-        tbody
-          tr(ng-repeat="detail in details |filter : searchText | orderBy:sortOrder")
-            td {{detail.firstName}}
-            td {{detail.lastName}}
-            td {{detail.age}}
-            td {{detail.city}}
-            td {{detail.country}}
- .jumbotron
-  h2 Using Custom Filter for the above table
-  div.table-responsive         
-      table.table
-        thead
-          tr
-            th 
-                h5 Employees Details
-          tr
-            th  
-              a(href="", ng-click="orderName('firstName')")
-                span.sortorder(ng-show="predicate === 'firstName'" ng-class="{reverse:reverse}") Firstname
-            th Lastname
-            th Age
-            th City
-            th Country
-        tbody
-          tr(ng-repeat="detail in details | orderBy:predicate:reverse")
-            td {{detail.firstName}}
-            td {{detail.lastName}}
-            td {{detail.age | ageReverse}}
-            td {{detail.city}}
-            td {{detail.country}}
-  h5 The age value in the 2nd table is reverse of the first table value for age..
-  
+            tr
+              th Firstname
+              th Lastname
+              th Age
+              th City
+              th Country
+          tbody
+            tr(ng-repeat="detail in details |filter : searchText | orderBy:sortOrder")
+              td {{detail.firstName}}
+              td {{detail.lastName}}
+              td {{detail.age}}
+              td {{detail.city}}
+              td {{detail.country}}
+  .row
+    .col-lh-12
+      h2 Using Custom Filter for the above table
+    .col-lg-12
+      .well
+        div.table-responsive         
+            table.table
+              thead
+                tr
+                  th 
+                      h5 Employees Details
+                tr
+                  th  
+                    a(href="", ng-click="orderName('firstName')")
+                      span.sortorder(ng-show="predicate === 'firstName'" ng-class="{reverse:reverse}") Firstname
+                  th Lastname
+                  th Age
+                  th City
+                  th Country
+              tbody
+                tr(ng-repeat="detail in details | orderBy:predicate:reverse")
+                  td {{detail.firstName}}
+                  td {{detail.lastName}}
+                  td {{detail.age | ageReverse}}
+                  td {{detail.city}}
+                  td {{detail.country}}
+        h5 The age value in the 2nd table is reverse of the first table value for age..
+        

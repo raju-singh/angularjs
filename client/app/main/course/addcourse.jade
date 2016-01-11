@@ -1,6 +1,6 @@
 .container(ng-controller="addCourse")
     .jumbotron
-        form.form-horizontal(ng-submit="addCourse(created)")
+        form.well.form-horizontal(ng-submit="addCourse(created)")
             .form-group
                 label.control-label.col-sm-2 Course Name : 
                 .col-sm-6
@@ -18,8 +18,10 @@
                 .col-sm-4
                     input.form-control(type="date", ng-model="course.created", min-date="date_now")
             .form-group
-                .col-sm-4
-                .col-sm-8
-                    button.btn.btn-primary(style="margin:10px;") Save Course
+                .col-lg-8.col-lg-push-2.well
+                    button.btn.btn-primary(style="margin:10px;") 
+                        span(ng-hide="loading") Save Course
+                        span(ng-show="loading")
+                            i.fa.fa-spinner Saving
                     a.btn.btn-primary(ng-click="reset()", style="margin:10px;") Reset
                     a.btn.btn-primary(ng-click="cancel()", style="margin:10px;") Cancel

@@ -1,8 +1,11 @@
 .container(ng-controller="courseCtrl")
+    div.page-header
+        h2 Course
     .jumbotron
         a(href="/add/course")
             span.glyphicon.glyphicon-plus  Add Course
         h3 There are {{courses.length}} courses here.
+        div.loader
         form.form-inline(style="float:right;")
             div.form-group
               input.form-control(ng-model="searchText.language", placeholder="FIlter by Tag")
@@ -29,8 +32,4 @@
                                 span edit
                         th 
                             button.btn
-                                //a(href= "/course/{{course._id}}/delete", ng-click="delete()") delete
                                 a(ng-click="delete(course, $index)") delete
-        .col-lg-12
-            p  Server response { {{courses}} }
-                

@@ -1,0 +1,39 @@
+.container
+    div.page-header
+        h2 Google Map
+    .row.profile-header(style="background-color: #19D1A3; color: #fff;")
+        .col-lg-12.col-md-12.col-xs-12
+            h2(style="text-align: center;") Take a moment to provide the information below, so we can personalize your experience
+    .row
+        .col-lg-12
+            .well
+                h3 Google Map With Search Option
+                .well
+                    .form(name="placeSearchFOrm")
+                        .col-lg-6
+                            input.form-control(type="text", ng-model="googleMap")
+                        .col-lg-3
+                            button.btn.btn-primary(ng-click="taketoLoaction()")
+                                i.fa.fa-search Seacrh
+    .row
+        .col-lg-12
+            .col-lg-4
+                .well
+                    form(name='searchDetails')
+                        .form-group
+                            input.form-control(type="text", ng-model="place.name",placeholder="Place looking for" )
+                        .form-group
+                            input.form-control(type="text", ng-model="place.lat",placeholder="Latitude" )
+                        .form-group
+                            input.form-control(type="text", ng-model="place.lng",placeholder="Longitude" )
+                .well
+                    img.image-responsive(src="http://placehold.it/300x300")
+            .col-lg-8.jumbotron
+                div#map(style="width:auto;height:453px; border:1px solid green")
+    .row
+        .jumbotron
+            .col-lg-12
+                p.
+                    kdfjgjkdfgdfgfdgfdgdf
+                    fdgdfsgfdgdfgdfg
+                    

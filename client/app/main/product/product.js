@@ -1,7 +1,8 @@
 /*global angular*/
 angular.module('myApp')
     .controller('productCtrl', function($scope, $uibModal){
-      $scope.products = [{name: 'Lumia', pid: '1', desc:'New in Market', price: '100', upvotes:'5'}];
+      $scope.products = [{name: 'Lumia', pid: '1', desc:'New in Market', price: '100', upvotes:'5'},
+                        {name: 'Micromax A1', pid: '101', desc:'With', price: '299', upvotes:'10'}];
       
       $scope.addproduct = function(){
         if($scope.pid != ''){

@@ -16,7 +16,7 @@ div
                 button(ngf-select="uploadFile($files)", accept="image/*") Select Image
                 ul
                     li(ng-repeat="f in files", style="font:smaller")
-                        img.img-circle(ngf-thumbnail="f")
+                        img.img-circle(height="200", width="auto", ngf-thumbnail="f")
             .form-group
                 button.btn.btn-primary(type="submit",  ng-click="addproduct()") Save
    div.modal-footer

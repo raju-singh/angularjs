@@ -1,6 +1,6 @@
 /*global angular*/
-angular.module('myApp', ['ngCookies', 'ngStorage','ngResource', 'ngRoute', 'ngFileUpload', 'ngAnimate', 'ui.bootstrap', 
-                    'mgcrea.ngStrap', 'angularUtils.directives.dirPagination', 'angular-jwt'])
+angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngResource', 'ngRoute', 'ngFileUpload', 'ngAnimate', 'ui.bootstrap', 
+                    'mgcrea.ngStrap', 'angular-jwt'])
     .config(function($routeProvider, $locationProvider, $httpProvider) {
     $locationProvider.html5Mode({ enabled: true,
                                 requireBase: false});
@@ -18,7 +18,9 @@ angular.module('myApp', ['ngCookies', 'ngStorage','ngResource', 'ngRoute', 'ngFi
         .when('/custom', {templateUrl: '/partials/main/custom/custom', controller:'customCtrl'})
         .when('/pagination', {templateUrl: '/partials/main/course/coursepagination', controller:'coursePager'})
         .when('/profile', {templateUrl: '/partials/main/profile/profile', controller:'profileCtrl'})
-        .when('/search', {templateUrl: '/partials/main/search/search', controller:'searchCtrl'});
+        .when('/search', {templateUrl: '/partials/main/search/search', controller:'searchCtrl'})
+        .when('/jan2016', {templateUrl:'/partials/main/jan2016/jan2016', controller: 'janCtrl'})
+        .otherwise({redirectTo: "/home" });
         
           $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
             return {
@@ -39,6 +41,8 @@ angular.module('myApp', ['ngCookies', 'ngStorage','ngResource', 'ngRoute', 'ngFi
         }]);
 
 })
- .controller('mainCtrl', function($scope){
+ .controller('mainCtrl', function($scope, $location){
    $scope.myApp = 'Angular World'; 
+   $scope.mapPage = $location.path();
+  // console.log($scope.mapPage);
 });

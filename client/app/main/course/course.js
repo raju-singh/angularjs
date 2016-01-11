@@ -4,9 +4,6 @@
 angular.module('myApp')
     .controller('courseCtrl', function($scope, mvCourse, $location, $alert, $routeParams, $uibModal){
         $scope.courses = mvCourse.index();
-        
-        console.log($scope.courses.tag);
-        
         $scope.coursePagination = function(){
             
         };
@@ -64,12 +61,12 @@ angular.module('myApp')
         }else{
             $scope.course = new mvCourse();
         }
+        $scope.loading = false;
        $scope.addCourse = function(created){
-         console.log("submit");
-
+            console.log("submit");
+            $scope.loading = true;
             function success(response) {
-                console.log("success", response)
-               // console.log(response.id);
+               // console.log("success", response)
                 $location.path("/course");
                 $alert({
                             title: 'Congratulations!',
@@ -94,18 +91,18 @@ angular.module('myApp')
        
        $scope.cancel = function(){
            $location.path('/course/');
-       }
+       };
        $scope.reset = function(){
            $scope.course = [];
        };
        $scope.delete = function(){
            $location.path('/course');
-       }
+       };
     })
     .controller('deleteCourse', function($scope, $routeParams, $route, mvCourse, $alert, $location,$uibModalInstance, deleteCourse){
         $scope.courses = deleteCourse.course;
         $scope.index = deleteCourse.index;
-       console.log($scope.index)
+       console.log($scope.index);
         $scope.delete = function  (index) {
             mvCourse.delete({ id: $scope.courses._id }).$promise.then(
                 function (response) {

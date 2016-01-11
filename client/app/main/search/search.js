@@ -7,7 +7,7 @@ angular.module('myApp')
         $scope.name = "";
         $scope.repos = [];
         function listUser(){
-            $http.get('https://api.github.com/users?since=135').success(function(data){
+            $http.get('https://api.github.com/users').success(function(data){
                //console.log(data);
                 $scope.items = data;
                $scope.name = data.login;
@@ -21,13 +21,13 @@ angular.module('myApp')
             });   
         }
         getRepo();
-      $scope.searchTwitter = function() {
+      /*$scope.searchTwitter = function() {
           $http.get('https://twitter.com/search?q='+$scope.tweetSearch).success(function(data){
-              console.log(data);
+              //console.log(data);
           }).error(function(response){
-              console.log(response);
+             // console.log(response);
           });
-      };
+      };*/
         $scope.items.login="";
         $scope.onItemSelected = function(){
             console.log('selected='+$scope.items.login);
@@ -54,7 +54,7 @@ angular.module('myApp')
             mydirect : '&',
             userpage : '&'
         },
-        template : '<div class="col-lg-6"><input type="text" class="form-control" ng-model="model" placeholder="{{prompt}}" ng-keydown="selected=false"/>'
+        template : '<div class="col-lg-6"><input type="text" class="form-control search-input" ng-model="model" placeholder="{{prompt}}" ng-keydown="selected=false"/>'
                     +'</div><div class="col-lg-3"><button class="btn btn-primary", ng-click="userpage()"> Search </button>'
                     +'</div><div class="itemszz col-lg-6" ng-hide="!model.length || selected">'
                     +'<div class="itemlist" ng-repeat="item in items | filter:model track by $index" ng-click="handleSelection(item.login)" style="cursor:pointer" ng-class="{active:isCurrent($index)}" ng-mouseenter="setCurrent($index)">'
@@ -73,10 +73,7 @@ angular.module('myApp')
         			 scope.select();
         		  },200);
     	    };
-    	   /* elem.bind('mouseleave', function(){
-    	        elem.
-    	    });*/
-            scope.current=0;
+    	    scope.current=0;
             scope.selected=true;
             scope.isCurrent=function(index){
                 return scope.current==index;
@@ -101,21 +98,18 @@ angular.module('myApp')
                     if(response.length > 0){  
                         elem.css('color', '#330000');
                         elem.css( 'background-color', '#47d147');
-                        //console.log(response);
-                       scope.emails = response;
-                        console.log(response[0].email);
+                        scope.emails = response;
+                       // console.log(response[0].email);
                     }
                     else{
                         elem.css('color', '#330000');
                         elem.css( 'background-color', '#e63900');
                         elem.append('<button>Clear</button>');
-                        console.log(response.data);
-                    }  
+                     }  
                    });
                }else{
                    elem.css('color', 'black');
-                   //console.log('Hello')
-               }
+                }
             });
         },
     };

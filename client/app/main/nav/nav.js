@@ -9,7 +9,7 @@ angular.module('myApp')
             {item : 'Course', url : "/course"},
             {item : 'Contact Us', url : "/contact"}
         ];
-        
+        //console.log($localStorage.userDetails);
         $scope.isActive = function(route) {
             return route === $location.path();
         };
