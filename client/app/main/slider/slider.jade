@@ -2,13 +2,13 @@ div(ng-controller = "slider")
     h5 Slider Using AngularJS
     div( ng-controller="slider")
         .row
-            .col-lg-12
+            .col-lg-12.well-md
                 uib-carousel(interval="myInterval" no-wrap="noWrapSlides")
                     uib-slide(ng-repeat="image in images" active="slide.active")
                         img(ng-src="{{image.src}}" style="margin:15px;width:60%;height:40% ")
                         div.carousel-caption
-        .col-lg-12
-            .col-lg-4(ng-repeat="image in images")
-                div.well
+        .row
+            .col-lg-12
+                .col-lg-4(ng-repeat="image in images")
                     img.img-responsive.well(src="{{image.src}}",  height="280px", width="250px", ng-click="initCarousalPopup(image, $event)")
         

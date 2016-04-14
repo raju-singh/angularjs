@@ -1,5 +1,6 @@
 (function(){
     'use strict';
+    /*global google*/
     /*global angular*/
 angular.module('myApp')
     .controller('janCtrl', ['$scope', function($scope, $q){
@@ -8,7 +9,7 @@ angular.module('myApp')
             var latLong = {lat:13.067439 , lng:80.237617 };
             var mapOptions = {
                     center: new google.maps.LatLng(13.067439, 80.237617),
-                    zoom: 8,
+                    zoom: 12,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     scrollwheel: true
             };
@@ -33,7 +34,7 @@ angular.module('myApp')
                     //console.log(results);
                     var marker = new google.maps.Marker({
                         map: resultsMap,
-                        zoom: 8,
+                        zoom: 16,
                         position: results[0].geometry.location
                     });
                     $scope.place.name = results[0].formatted_address;

@@ -1,27 +1,18 @@
-//var routes = require('routes');
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-//var passport = require('passport');
-//var LocalStrategy = require('passport-local').Strategy;
 var cookieParser = require("cookie-parser");
-//var morgan = require("morgan");
 var session = require("express-session");
 var multer = require("multer");
-//var fs = require('fs');
+var fs = require('fs');
 var jwt = require('jsonwebtoken');
-//var express_jwt = require('express-jwt');
-var mail = require("nodemailer");
-
+var session = require('express-session');
 var stylus = require('stylus');
-//var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
 
 app.use(cookieParser());
 app.use(session({ secret: 'keyboard cat' }));
-//app.use(passport.initialize());
-//app.use(passport.session());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('views', __dirname + '/server/views');
@@ -63,6 +54,8 @@ var usermodel = require('./server/models/userModel');
 var user = require('./server/controllers/userctrl');
 var courseModel = require('./server/models/courseModel');
 var courses = require('./server/controllers/coursectrl');
+var productModel = require('./server/models/productModel');
+var products = require('./server/controllers/productctrl');
 
 app.get('/partials/*', function(req, res) {
     res.render('../../client/app/' + req.params[0]);
@@ -70,11 +63,8 @@ app.get('/partials/*', function(req, res) {
 
 app.post('/api/avatar/upload/:id', multer({ dest: './uploads/avatar/'}).single('file'), function(req ,res){
        // console.log( req.params.id);
-       // console.log(req.body); //form fields
-	     // console.log(req.file);
-	      res.status(204).end();
-	      
-	      return res;
+       res.status(204).end();
+	  return res;
  });
 app.get('/api/user/search/:q', user.searchUser); 
 app.post('/api/register', user.createUser);
@@ -91,6 +81,10 @@ app.delete('/api/courses/:id', courses.deleteCourse);
 app.get('/api/pagination/:page', courses.getPagination);
 app.post('/api/contact', courses.postContact);
 app.post('/api/product-image', courses.postFile);
+
+app.route('/api/product').post(products.addProduct).get(products.getProduct);
+app.route('/api/product/:id').delete(products.deleteProduct);
+app.post('/api/product/:id/likes/:userId', products.updateProduct);
 
 var User = require('mongoose').model('User');
 

@@ -49,11 +49,16 @@
                 });
             };
             $scope.uploadFile = function (files) {
-                console.log(currentId);
+              
                 $scope.files = files;
+                 console.log($scope.files[0]);
                 if (files && files.length) {
                     $scope.file = files[0];
                 }
+                 /*if($scope.files[0].size/1000>20){
+                   alert('The avatar should not be more then 20kb.');
+               }else{*/
+               
                 Upload.upload({
                         url: '/api/avatar/upload/'+$scope.currentUser,
                         //urlParams : ['currentId'],
@@ -63,7 +68,7 @@
                     }).then(function (response) {
                         $timeout(function () {
                             $scope.result = response.data;
-                            console.log(response);
+                            //console.log(response);
                         });
                     }, function (response) {
                         if (response.status > 0) {

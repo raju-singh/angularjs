@@ -7,12 +7,6 @@ angular.module('myApp')
                email:$scope.email,
                password :$scope.password
            };
-            /* Auth.logIn(logIn).then(function(response){
-                    $location.path('/profile');
-                    console.log(response);
-                },function(error){
-                    console.log(error);
-                });*/
           $http.post('/api/login', logIn)
                     .success(function(response) {
                         if (response.type == false) {
@@ -20,13 +14,9 @@ angular.module('myApp')
                         } 
                         else {
                             $localStorage.userDetails = response;
-                          //  console.log(response);
-                           // console.log(response.access_token);
                             var user = {};
                             angular.extend(user, jwtHelper.decodeToken(response.token));
                             Auth.currentUser = user;
-                            //session.setUser(user);
-                            //session.setAccessToken(user.accessToken);
                             $location.path('/');
                         }
                      })
@@ -85,15 +75,13 @@ angular.module('myApp')
     }])
     .factory('Auth', [ '$localStorage', '$http', '$location', 'jwtHelper', function( $localStorage, $http, $location, jwtHelper) {
         var currentUser = {};
+        var currentUserDetails = $localStorage.userDetails;
         if(!!$localStorage.userDetails) {
             angular.extend(currentUser, jwtHelper.decodeToken($localStorage.userDetails.token));
         }
-       /* var authentication = {
-            isAuth: false,
-            userName : ""
-        };*/
         return {
             currentUser : currentUser,
+            currentUserDetails : currentUserDetails,
             isAuthenticated : function() {
                 return !!this.currentUser && this.currentUser._id;
             },
@@ -110,23 +98,5 @@ angular.module('myApp')
                 return $http.put('/api/register/:id',  {id: '@id' });
             
             },
-           /* register : function(formData){
-                return $http.post('/api/register', formData).then(function(response){
-                    return response;
-                });
-            },
-            logIn : function(formData){
-                return $http.post('/api/login', formData).then(function(response){
-                    $localStorage.userDetails = response.data;
-                   // var user = {};
-                    $localStorage.token = response.token;
-                    //angular.extend(user, jwtHelper.decodeToken(response.token));
-                    //currentUser = user;
-                    authentication.isAuth = true;
-                    authentication.userName = formData.email;
-                    
-                    return response;
-                });
-            }*/
         };
 }]);

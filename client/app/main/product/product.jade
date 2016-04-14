@@ -1,28 +1,52 @@
-.container(ng-controller="productCtrl")
-    div.page-header
+.container
+    div.node-header
         h2 Product
     .jumbotron
         .row
+            .col-lg-12
+                
             .col-lg-12.well
-                a.btn.btn-primary(ng-click="addproduct($event)") Add Product Items
                 table.table.table-striped
-                    thead
+                    thead(style="background-color:#6F7273; color:#1A5853;")
                         tr
                             th Product Name
                             th Product Id
                             th Description
                             th Price
                             th Votes
+                            th Delete
                     tbody
-                        tr(ng-repeat="product in products | orderBy:'pid'")
-                            th {{product.name}}
-                            th {{product.pid}}
+                        tr(ng-repeat="product in products | orderBy:'pid' track by $index")
+                            th {{product.productName}}
+                            th {{product.productId}}
                             th {{product.desc}}
                             th {{product.price | currency}}
                             th
-                                span.increment(ng-click="incrementUpvotes(product)")
-                                {{product.upvotes}} 
-                                span.decrement(ng-click="decrementUpvotes(product)") 
+                                span.fa.fa-thumbs-up(ng-click="incrementUpvotes(product)") {{product.likesCount}}
+                            th 
+                                button.btn(ng-click="deleteProduct(product._id, $index)") Delete
+        .row
+            .col-lg-12.well
+                form(novalidate, role="form")
+                    .form-group
+                        .col-md-6
+                            label Product Name::
+                        .col-md-6
+                            input.form-control(type="text", ng-model="productName", placeholder="Product Name")
+                    .form-group.col-md-6
+                        input.form-control(type="text", ng-model="productId", placeholder="Product Id")
+                    .form-group.col-md-6
+                        input.form-control(type="text", ng-model="desc", placeholder="Prodyct Description")
+                    .form-group.col-md-6
+                        input.form-control(ng-model="price", placeholder="Product Price")
+                    .form-group.col-md-6
+                        button.btn.btn-primary(ngf-select="uploadFile($files)", accept="image/*") Select Image
+                        ul
+                            li(ng-repeat="f in files", style="font:smaller")
+                                img.img-circle(height="200", width="auto", ngf-thumbnail="f")
+                    .form-group
+                        button.btn.btn-primary(type="submit",  ng-click="addproduct()") Save
+                        button.btn.btn-primary(type="button", ng-click="cancel()") Cancel
 
         
     

@@ -1,6 +1,7 @@
 /*global angular*/
+//require('textangular/dist/textAngular-sanitize.min');
 angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngResource', 'ngRoute', 'ngFileUpload', 'ngAnimate', 'ui.bootstrap', 
-                    'mgcrea.ngStrap', 'angular-jwt'])
+                    'mgcrea.ngStrap', 'angular-jwt', 'textAngular'])
     .config(function($routeProvider, $locationProvider, $httpProvider) {
     $locationProvider.html5Mode({ enabled: true,
                                 requireBase: false});
@@ -20,7 +21,7 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
         .when('/profile', {templateUrl: '/partials/main/profile/profile', controller:'profileCtrl'})
         .when('/search', {templateUrl: '/partials/main/search/search', controller:'searchCtrl'})
         .when('/jan2016', {templateUrl:'/partials/main/jan2016/jan2016', controller: 'janCtrl'})
-        .otherwise({redirectTo: "/home" });
+        .otherwise({redirectTo: "/" });
         
           $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
             return {
@@ -45,4 +46,11 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
    $scope.myApp = 'Angular World'; 
    $scope.mapPage = $location.path();
   // console.log($scope.mapPage);
+})
+.controller('scriptCtrl', function($scope, $location){
+  $scope.map = $location.path();
+  if($scope.map== '/jan2016'){
+     // console.log($scope.map);
+      $scope.mapPage = true;
+  }
 });

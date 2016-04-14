@@ -1,5 +1,5 @@
 .container(ng-controller="courseCtrl")
-    div.page-header
+    div.node-header
         h2 Course
     .jumbotron
         a(href="/add/course")
@@ -8,7 +8,7 @@
         div.loader
         form.form-inline(style="float:right;")
             div.form-group
-              input.form-control(ng-model="searchText.language", placeholder="FIlter by Tag")
+              input.form-control(type="search", ng-model="searchText.language", placeholder="FIlter by Tag")
             div.form-group
               select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
         div(infinite-scroll="coursePagination()", infinite-scroll-distance="0.1")

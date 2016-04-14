@@ -1,4 +1,4 @@
-nav.navbar.navbar-inverse(ng-controller="menuCtrl")
+nav.menu-bar.navbar-inverse(ng-controller="menuCtrl")
   div.container-fluid
     div.navbar-header
       a.navbar-brand(href="#") Angular Js
@@ -8,7 +8,7 @@ nav.navbar.navbar-inverse(ng-controller="menuCtrl")
             a(href="{{menu.url}}") {{menu.item}}
       ul.nav.navbar-nav.navbar-right
         li(ng-if="identity.isAuthenticated()")
-           a Hi {{identity.currentUser.firstName}}
+           a Welcome {{identity.currentUserDetails.firstName}} {{identity.currentUserDetails.lastName}}
         li(ng-if="identity.isAuthenticated()")
           a(href="/profile") My Profile
         li(ng-if="!identity.isAuthenticated()")

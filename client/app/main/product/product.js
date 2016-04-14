@@ -1,50 +1,25 @@
 /*global angular*/
-angular.module('myApp')
-    .controller('productCtrl', function($scope, $uibModal){
-      $scope.products = [{name: 'Lumia', pid: '1', desc:'New in Market', price: '100', upvotes:'5'},
-                        {name: 'Micromax A1', pid: '101', desc:'With', price: '299', upvotes:'10'}];
-      
-      $scope.addproduct = function(){
-        if($scope.pid != ''){
-            $scope.products.push({
-                name : $scope.pName, pid: $scope.pid, desc: $scope.pDesc, price : $scope.pPrice, upvotes: 0
-              });
-            $scope.pName = '';
-            $scope.pid = '';
-            $scope.pDesc = '';
-            $scope.pPrice = '';
-        }
-      };
-      $scope.incrementUpvotes = function(product) {
-        product.upvotes ++;
-      };
-      $scope.decrementUpvotes = function(product){
-        if(product.upvotes > 0){
-            product.upvotes --;
-        }
-      }
-      //$scope.name = name;
-      $scope.animationsEnabled = true;
-      $scope.addproduct = function(event){
-         var uibModalInstance = $uibModal.open({
-                        animation: $scope.animationsEnabled,
-                        templateUrl: '/partials/main/product/addproduct',
-                        controller: 'addProductCtrl',
-                        size: 'md',
-                    });
-                    event.preventDefault();
-                    event.stopPropagation();
-      };
-})
-.controller('addProductCtrl', function($http, $scope, $uibModalInstance, Upload, $timeout){
-    $scope.cancel = function () {
-      $uibModalInstance.dismiss('cancel');
+angular.module('myApp').controller('productCtrl', function($http, $scope, Upload, $timeout, Product, Auth){
+    $scope.products = {};
+    $scope.userId = Auth.currentUser._id;
+    $scope.incrementUpvotes = function(product) {
+        product.likesCount++;
+        var productUpdate = {
+            productName: product.productName,
+            productId: product.productId,
+            desc: product.desc,
+            price: product.price,
+            likesCount : product.likesCount,
+            upvotes:{userLike: true, userId : $scope.userId}
+        };
+        //console.log(product._id);
+        $http.post('/api/product/:id/likes/:userId',  productUpdate ).then(function(res){
+            console.log(res);
+        });
     };
-    
-    $scope.$watch('files', function() {  
-        $scope.uploadFile($scope.files);
-    });
-    
+    $scope.getLikesStatus = function(){
+      $http.get('/api/product/:id');  
+    };
     $scope.uploadFile = function (files) {
         $scope.files = files;
         if (files && files.length) {
@@ -57,7 +32,6 @@ angular.module('myApp')
             }).then(function (response) {
                 $timeout(function () {
                     $scope.result = response.data;
-                    //console.log($scope.result);
                 });
             }, function (response) {
                 if (response.status > 0) {
@@ -67,27 +41,51 @@ angular.module('myApp')
                 $scope.progress = 
                     Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
             });
-        //console.log($scope.file);
     };
    
     $scope.addproduct = function(){
-         var newProduct = {
-          productName: $scope.product.name,
-          pid: $scope.product.pid,
-          details: $scope.product.details,
-          price: $scope.product.price,
-        }
-        console.log(newProduct);
-       $http.post('/api/newproduct', newProduct)
-                .success(function(response) {
-                    console.log("success", response)
-                    //$location.path('/');
-                    alert("Your's product has been added...Thank You!");
-                })
-                .error(function(response){
-                    console.log("failed", response);
-                    alert('Sorry.....');
-                    $uibModalInstance.dismiss();
-                });
+        var newProduct = {
+            productName: $scope.productName,
+            productId: $scope.productId,
+            desc: $scope.desc,
+            price: $scope.price,
+            likesCount :'0'
+        };
+        Product.create(newProduct).$promise.then(function(response){
+            console.log(response);
+            $scope.products.unshift(response);
+            $scope.productName = '';
+            $scope.productId= '';
+            $scope.desc= '';
+            $scope.price= '';
+            $scope.files = '';
+        });
     };
+    $scope.deleteProduct = function(productid, index){
+        Product.delete({id: productid}).$promise.then(function(response){
+            $scope.products.splice(index, 1);
+        });
+    };
+    $scope.getProductList = function(){
+        $http.get('/api/product').then(function(response){
+            console.log(response.data);
+            $scope.products = response.data;
+        });
+    };
+    $scope.getProductList();
+}).service('Product', function($location, $resource){
+    return $resource('/api/product/:id/:userId', {id: '@id', userId: '@userId'}, {
+      create: {
+        method: 'POST',
+        isArray: false
+      },
+      delete: {
+        method: 'DELETE',
+        urlParams: {id: '@id'}
+      },
+      update : {
+        method: 'PUT',
+        urlParams: {id: '@id', userId: '@userId'}
+      }
+    });
 });

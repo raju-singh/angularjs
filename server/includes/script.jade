@@ -13,6 +13,9 @@ script(type="text/javascript", src="/filez/ng-file-upload/ng-file-upload.js")
 script(type="text/javascript", src="/filez/ngstorage/ngStorage.min.js")
 script(type="text/javascript", src="/filez/angular-jwt/dist/angular-jwt.js")
 script(type="text/javascript", src="/filez/angular-loading-bar/build/loading-bar.js")
+script(type="text/javascript", src="/filez/textAngular/dist/textAngular-rangy.min.js")
+script(type="text/javascript", src="/filez/textAngular/dist/textAngular-sanitize.min.js")
+script(type="text/javascript", src="/filez/textAngular/dist/textAngular.min.js")
 
 script(type="text/javascript", src="/app/app.js")
 script(type="text/javascript", src="/app/main/slider/slider.js")
@@ -29,7 +32,6 @@ script(type="text/javascript", src="/app/main/custom/custom.js")
 script(type="text/javascript", src="/app/main/search/search.js")
 script(type="text/javascript", src="/app/main/jan2016/jan2016.js")
 script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
-
-script(ng-if="mapPage" type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzVlINxLxuo0qk9qq9uJGA6B1dfDykly4&signed_in=true&libraries=places&callback=initMap")
+script(ng-controller="scriptCtrl", ng-hide="mapPage" type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzVlINxLxuo0qk9qq9uJGA6B1dfDykly4&signed_in=true&libraries=places&callback=initMap")
 script(type="text/javascript", src="/app/main/product/product.js")
 

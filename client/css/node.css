@@ -1,3 +1,16 @@
+.node-header{
+    padding-bottom: 9px;
+    margin: 70px 0 15px;
+    border-bottom: 1px solid #eee;
+}
+.menu-bar{
+  position:fixed;
+  width:100%;
+  z-index:101;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
 div .login-form{
     float :right;
     margin-left: 250px;

@@ -1,5 +1,5 @@
 .container
-  div.page-header
+  div.node-header
         h2 Contact Us
   .jumbotron
     .row
@@ -35,5 +35,9 @@
               label.col-lg-4.control-label Address:
               .col-lg-8
                 input.form-control(type="textarea", ng-model="address")
+            .form-group
+              label.col-lg-4.control-label Address:
+              .col-lg-8
+                text-angular(ng-model="htmlVariable")
             .form-group.col-lg-8.col-lg-push-6
               button.btn.btn-primary(ng-click="contact_send()") Submit

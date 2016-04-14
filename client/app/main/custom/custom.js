@@ -4,8 +4,8 @@ angular.module('myApp')
     .controller('customCtrl', function($scope, $resource, demoValue, demoConstant, $http){
        $scope.customer = {name: 'Raju', address : 'Chernnai'};
       $scope.twitterResult = [];
-      $scope.demo = demoValue;
-      $scope.demoConstant = demoConstant;
+      $scope.demo = demoValue.second;
+      $scope.demoConstant = demoConstant.one;
       var counter = 0;
       $scope.num = 0;
       
@@ -24,7 +24,6 @@ angular.module('myApp')
       };
      
       $scope.clickData = function(){
-          //alert('Hi hello!');
           counter++;
           $scope.ratings = { name: 'Rokosieno', street: counter + ' Cedar City Point St.'};
       };
@@ -36,15 +35,7 @@ angular.module('myApp')
             console.log(result);
           });
       };
-     /* var TwitterAPI = $resource("https://search.twitter.com/search.json",
-            { callback: "JSON_CALLBACK" },
-            { get: { method: "JSONP" }});
-        
-      $scope.searchYoutube = function() {
-          $scope.resultss = TwitterAPI.get({ q: $scope.youtubeText });
-          console.log($scope.resultss)
-      };*/
-})
+   })
 .directive('myCustomElement', function myCustomElement() {
        return {
           restrict: 'EA',
@@ -55,7 +46,7 @@ angular.module('myApp')
               click: '&'
           },
           template: [
-             "<div>",
+             "<div class='well'>",
              "	<h3>My Custom Element's Heading</h3>",
              "	<p>Some content here!</p>",
              "	<p>Name : {{name}}, Address : {{street}}</p>",
@@ -92,14 +83,15 @@ angular.module('myApp')
 .directive('linkDirective', function(){
     return {
         restrict: 'A',
-       // require : 'ngModel',
+        // require : 'ngModel',
+        replace: true,
         link: function(scope, element, attrs){
             scope.title = attrs.text;
             element.bind('mouseenter', function(){
                 element.css('color', 'green');
                 element.addClass('active');
                 element.attr('data-toggle', 'popover');
-                element.attr('title', scope.title);
+                element.attr('title', attrs.text);
             });
             element.bind('mouseleave', function(){
                 element.css('color', 'black');
@@ -109,5 +101,5 @@ angular.module('myApp')
         }
     };
 })
-.value('demoValue', '0123456789')
-.constant('demoConstant', 'Greasy Giant');
+.value('demoValue', {first:'0123456789', second:'895625823'})
+.constant('demoConstant', {all: 'Greasy Giant', one:'Greasy'});

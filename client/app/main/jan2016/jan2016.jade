@@ -1,39 +1,40 @@
 .container
-    div.page-header
+    div.node-header
         h2 Google Map
-    .row.profile-header(style="background-color: #19D1A3; color: #fff;")
-        .col-lg-12.col-md-12.col-xs-12
-            h2(style="text-align: center;") Take a moment to provide the information below, so we can personalize your experience
-    .row
-        .col-lg-12
-            .well
-                h3 Google Map With Search Option
-                .well
-                    .form(name="placeSearchFOrm")
-                        .col-lg-6
-                            input.form-control(type="text", ng-model="googleMap")
-                        .col-lg-3
-                            button.btn.btn-primary(ng-click="taketoLoaction()")
-                                i.fa.fa-search Seacrh
-    .row
-        .col-lg-12
-            .col-lg-4
-                .well
-                    form(name='searchDetails')
-                        .form-group
-                            input.form-control(type="text", ng-model="place.name",placeholder="Place looking for" )
-                        .form-group
-                            input.form-control(type="text", ng-model="place.lat",placeholder="Latitude" )
-                        .form-group
-                            input.form-control(type="text", ng-model="place.lng",placeholder="Longitude" )
-                .well
-                    img.image-responsive(src="http://placehold.it/300x300")
-            .col-lg-8.jumbotron
-                div#map(style="width:auto;height:453px; border:1px solid green")
-    .row
-        .jumbotron
+    .jumbotron
+        .row.profile-header(style="background-color: #19D1A3; color: #fff;")
             .col-lg-12
-                p.
-                    kdfjgjkdfgdfgfdgfdgdf
-                    fdgdfsgfdgdfgdfg
-                    
+                h2(style="text-align: center;") Take a moment to provide the information below, so we can personalize your experience
+        .row
+            .col-lg-12.well
+                .well
+                    h3 Google Map With Search Option
+                    .well
+                        form(name="placeSearchFOrm")
+                            .col-lg-6
+                                input.form-control(type="text", ng-model="googleMap")
+                            .col-lg-3
+                                button.btn.btn-primary(ng-click="taketoLoaction()")
+                                    i.fa.fa-search Seacrh
+        .row
+            .col-lg-12.well
+                .col-lg-4
+                    .well
+                        form(name='searchDetails')
+                            .form-group
+                                input.form-control(type="text", ng-model="place.name",placeholder="Place looking for" )
+                            .form-group
+                                input.form-control(type="text", ng-model="place.lat",placeholder="Latitude" )
+                            .form-group
+                                input.form-control(type="text", ng-model="place.lng",placeholder="Longitude" )
+                    .well
+                        img.image-responsive(src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Kinnaur_Kailash_with_Monolithic_pillar_a_79_feet_vertical_rock_formation_that_resembles_a_Shivalinga.jpg/800px-Kinnaur_Kailash_with_Monolithic_pillar_a_79_feet_vertical_rock_formation_that_resembles_a_Shivalinga.jpg", width="280", height="300")
+                .col-lg-8.jumbotron
+                    div#map(style="width:auto;height:453px; border:1px solid green")
+        .row
+            .col-lg-12
+                .well
+                    p.
+                        A world map is a map of most or all of the surface of the Earth. World maps form a distinctive category of maps due to the problem of projection. Maps by necessity distort the presentation of the earth's surface. These distortions reach extremes in a world map. The many ways of projecting the earth reflect diverse technical and aesthetic goals for world maps.[3]
+                        World maps are also distinct for the global knowledge required to construct them. A meaningful map of the world could not be constructed before the European Renaissance because less than half of the earth's coastlines, let alone its interior regions, were known to any culture. New knowledge of the earth's surface has been accumulating ever since and continues to this day.
+                        
