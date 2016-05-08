@@ -3,20 +3,19 @@ var Product = require('mongoose').model('Product');
 exports.addProduct= function(req, res){
     console.log(req.body);
     var product = new Product(req.body);
-    product.save();
-    res.send(req.body);
+    product.save(function(err, collection){
+        if(err)
+            console.log('hello');
+        else
+            res.send(collection);
+    });
+    
 };
 exports.getProduct = function(req, res){
     
     Product.find({}).exec(function(err, collection){
-        if(err){
-            //console.log(err);
-            res.send(err);
-        }
-        else{
-           // console.log(collection);
+           console.log(collection);
             res.send(collection);
-        }
     });
 };
 exports.deleteProduct = function(req, res){

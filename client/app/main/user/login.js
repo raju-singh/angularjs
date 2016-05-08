@@ -14,6 +14,7 @@ angular.module('myApp')
                         } 
                         else {
                             $localStorage.userDetails = response;
+                            //localStorage.setItem('userName', re)
                             var user = {};
                             angular.extend(user, jwtHelper.decodeToken(response.token));
                             Auth.currentUser = user;
@@ -26,10 +27,24 @@ angular.module('myApp')
                      });
        }; 
     }])
-    .controller('signinCtrl', ['$scope', 'Auth', 'jwtHelper', '$localStorage', '$http', '$location', function($scope, Auth, jwtHelper, $localStorage, $http, $location){
+    .controller('signinCtrl', ['$scope', 'Auth', 'users', 'jwtHelper', '$localStorage', '$http', '$location', 
+                function($scope, Auth, users, jwtHelper, $localStorage, $http, $location){
+        $scope.checkUser = function(){
+            //console.log($scope.userName);
+          var q = $scope.userName;
+          if($scope.userName.length>=3){
+              console.log('yes');
+              users.checkUser({q: $scope.userName}).$promise.then(function (response) {
+                    if(response){  
+                        console.log(response);
+                    }
+              });
+          }
+        };
         
         $scope.signup = function(){
            $scope.newUserData = {
+               userName : $scope.userName,
                email :$scope.email,
                password : $scope.password
            };
@@ -97,6 +112,6 @@ angular.module('myApp')
             update : function(){
                 return $http.put('/api/register/:id',  {id: '@id' });
             
-            },
+            }
         };
 }]);

@@ -104,12 +104,12 @@ exports.getUser = function(req, res){
 
 exports.searchUser = function(req, res){
     //console.log(req.params.q);
-    var email = req.params.q;
-    User.find({email : new RegExp(email, 'i') }).exec(function(err, results){
+    var firstName = req.params.q;
+    User.find({firstName : new RegExp(firstName, 'i') }).exec(function(err, results){
         if(err){
             res.json({
                 type: false,
-                data: "Error occured: " + err
+                data: "No user found with username "+firstName + err
             });
         }
         else{
@@ -128,4 +128,33 @@ exports.userList = function(req, res){
     User.find({}).exec(function(err, users){
         res.send(users);
     });
+};
+exports.checkUser = function(req, res){
+    var samp = req.params.q;
+    console.log(samp);
+    User.find({userName :  new RegExp(samp, 'i') }).exec(function(err, user){
+      console.log(user);
+      if(err){
+            res.json({
+                type: false,
+                data: "Username is jhhvalid! "+user + err
+            });
+        }
+        else{
+            console.log(user)
+           // res.send(user);
+            if(user == samp){
+                
+                res.json({
+                    type: true,
+                    data: "Username is Taken! "+user + err
+                });    
+            }else{
+                res.json({
+                    type: true,
+                    data: "Username is valid! "+user + err
+                });
+            }
+        }
+  }); 
 };

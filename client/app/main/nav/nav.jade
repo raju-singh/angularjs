@@ -6,6 +6,7 @@ nav.menu-bar.navbar-inverse(ng-controller="menuCtrl")
       ul.nav.navbar-nav
         li(ng-repeat="menu in menus", ng-class="{active : isActive(menu.url)}", ng-if="identity.isAuthenticated()")
             a(href="{{menu.url}}") {{menu.item}}
+              i(class="{{menu.iconClass}}")
       ul.nav.navbar-nav.navbar-right
         li(ng-if="identity.isAuthenticated()")
            a Welcome {{identity.currentUserDetails.firstName}} {{identity.currentUserDetails.lastName}}

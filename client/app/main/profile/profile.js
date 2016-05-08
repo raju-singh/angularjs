@@ -42,7 +42,7 @@
         				},
         				password:$scope.profileData.password,
                     };
-                $http.put('/api/register/:id', user).$promise.then(function(response){
+                $http.put('/api/register/:id', user).then(function(response){
                         if(response){
                             $location.path('/');
                         }

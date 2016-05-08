@@ -7,7 +7,8 @@ angular.module('myApp')
             {item : 'Filter', url : "/filter"},
             {item : 'Product', url : "/product"},
             {item : 'Course', url : "/course"},
-            {item : 'Contact Us', url : "/contact"}
+            {item : 'Contact Us', url : "/contact"},
+            {item: '', url: "/search", iconClass: "fa fa-search fa-3"}
         ];
         $scope.isActive = function(route) {
             return route === $location.path();

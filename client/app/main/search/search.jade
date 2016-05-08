@@ -25,26 +25,14 @@
             h3 GitHub User repos searchi
             .col-lg-12
                 auto-focuss(items="items", prompt="Search User", title= "{{items.login}}", model="items.login", userpage="gotoUserpage(items.id)" mydirect="reDirect()" select="onItemSelected()")
-            //.row
-                .col-lg-12
-                    table.table.table-striped
-                        thead
-                            tr
-                                td UserName
-                                td Avatar
-                                td Repository
-                        tbody
-                            tr(ng-repeat="item in items")
-                                td {{item.login}}
-                                td 
-                                    img.img-circle(src="{{item.avatar_url}}", height="70px", width="70px")
-                                td {{item.repos_url}}
             .row
                 .col-lg-12
                     h4 Angular Repository on GitHub
                     div.col-md-9
-                        div(ng-repeat="repo in repos")
-                            a(href="{{repo.html_url}}", target="_blank")  {{repo.name}}
+                        div.well
+                            ul.nav.nav-tabs
+                                li(ng-repeat="repo in repos")
+                                    a(href="{{repo.html_url}}", target="_blank")  {{repo.name}}
     .col-lg-12
         .jumbotron
             h3 Tweet search

@@ -50,5 +50,6 @@ exports.postContact = function(req, res){
 };
 exports.postFile = function(req, res){
     var file = req.body.file;
-    console.log(file);
+   // console.log(req);
+   res.send('Sorry! Your image cannot be upload now....');
 };

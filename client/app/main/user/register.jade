@@ -6,6 +6,11 @@
                     .col-md-4.col-md-push-4
                         h2.text-center Sign up
                         .form-group
+                            input.form-control.input-lg(type="text", id="userName", ng-keyup="checkUser()" name="userName", ng-model="userName", placeholder="Username", required, autofocus)
+                            .help-block.text-danger(ng-if="signupForm.userName.$dirty", ng-messages="signupForm.userName.$error")
+                                div(ng-message="required") Your Username address is required.
+                                div(ng-message="userName") Your Username address is invalid.
+                        .form-group
                             input.form-control.input-lg(type="email", id="email", name="email", ng-model="email", placeholder="Email", required, autofocus)
                             .help-block.text-danger(ng-if="signupForm.email.$dirty", ng-messages="signupForm.email.$error")
                                 div(ng-message="required") Your email address is required.

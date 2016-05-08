@@ -66,22 +66,26 @@ app.post('/api/avatar/upload/:id', multer({ dest: './uploads/avatar/'}).single('
        res.status(204).end();
 	  return res;
  });
+ /* User API*/
 app.get('/api/user/search/:q', user.searchUser); 
 app.post('/api/register', user.createUser);
 app.get('/api/user', user.userList);
+app.get('/api/user/checkUser/:q', user.checkUser);
 app.post('/api/login', user.signinUser);
 app.get('/api/authenticateme', ensureAuthorized, user.userAuth);
 app.put('/api/register/:id', user.updateUser);
 app.get('/api/register/:id', user.getUser);
+/* Course API*/
 app.get('/api/courses', courses.getCourses);
 app.get('/api/courses/:id', courses.getCourseId);
 app.post('/api/courses', courses.createCourse);
 app.put('/api/courses/:id', courses.updateCourse);
 app.delete('/api/courses/:id', courses.deleteCourse);
 app.get('/api/pagination/:page', courses.getPagination);
-app.post('/api/contact', courses.postContact);
-app.post('/api/product-image', courses.postFile);
 
+app.post('/api/contact', courses.postContact);
+/* Product API*/
+app.post('/api/product-image', courses.postFile);
 app.route('/api/product').post(products.addProduct).get(products.getProduct);
 app.route('/api/product/:id').delete(products.deleteProduct);
 app.post('/api/product/:id/likes/:userId', products.updateProduct);

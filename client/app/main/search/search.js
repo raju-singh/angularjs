@@ -21,13 +21,13 @@ angular.module('myApp')
             });   
         }
         getRepo();
-      /*$scope.searchTwitter = function() {
-          $http.get('https://twitter.com/search?q='+$scope.tweetSearch).success(function(data){
-              //console.log(data);
+      $scope.searchTwitter = function() {
+          $http.get('https://twitter.com/search?q=angular%20js').success(function(data){
+              console.log(data);
           }).error(function(response){
              // console.log(response);
           });
-      };*/
+      };
         $scope.items.login="";
         $scope.onItemSelected = function(){
             console.log('selected='+$scope.items.login);
@@ -99,12 +99,13 @@ angular.module('myApp')
                         elem.css('color', '#330000');
                         elem.css( 'background-color', '#47d147');
                         scope.emails = response;
-                       // console.log(response[0].email);
+                       //console.log(response);
                     }
                     else{
                         elem.css('color', '#330000');
                         elem.css( 'background-color', '#e63900');
                         elem.append('<button>Clear</button>');
+                       // console.log(response.data);
                      }  
                    });
                }else{
@@ -123,8 +124,14 @@ angular.module('myApp')
 				urlParams: {q: '@q'}
 			},
 	userList: {
-	    url :'/api/user',
-	    method: 'GET'
-	}		
+	        url :'/api/user',
+	        method: 'GET'
+	    },
+	checkUser: {
+				url: '/api/user/checkUser/:q',
+				method: 'GET',
+			    //isArray : true,
+				urlParams: {q: '@q'}
+			},
     });
 });

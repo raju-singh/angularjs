@@ -34,6 +34,7 @@ angular.module('myApp').controller('productCtrl', function($http, $scope, Upload
                     $scope.result = response.data;
                 });
             }, function (response) {
+                console.log(response);
                 if (response.status > 0) {
                     $scope.errorMsg = response.status + ': ' + response.data;
                 }
@@ -49,7 +50,8 @@ angular.module('myApp').controller('productCtrl', function($http, $scope, Upload
             productId: $scope.productId,
             desc: $scope.desc,
             price: $scope.price,
-            likesCount :'0'
+            likesCount :'0',
+            upvotes: {userLike: '1', user: Auth.currentUser }
         };
         Product.create(newProduct).$promise.then(function(response){
             console.log(response);
@@ -68,7 +70,7 @@ angular.module('myApp').controller('productCtrl', function($http, $scope, Upload
     };
     $scope.getProductList = function(){
         $http.get('/api/product').then(function(response){
-            console.log(response.data);
+            console.log(response);
             $scope.products = response.data;
         });
     };
