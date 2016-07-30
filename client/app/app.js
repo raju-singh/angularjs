@@ -9,7 +9,7 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
         .when('/contact',
             {templateUrl: '/partials/main/contact-us/contact',
                 controller: 'contactCtrl',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -18,10 +18,14 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }
+                }*/
+            })
+        .when('/input',
+            {templateUrl: '/partials/main/customInput/custominput',
+                controller: 'customInput',
             })
         .when('/filter', {templateUrl: '/partials/main/aboutus/about-us', controller: 'mainCtrl',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -30,9 +34,9 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/', {templateUrl: '/partials/main/main', controller: 'mainCtrl',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -41,11 +45,11 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/login', {templateUrl: '/partials/main/user/login', controller: 'loginCtrl'})
         .when('/register', {templateUrl: '/partials/main/user/register', controller: 'signinCtrl'})
         .when('/product', {templateUrl: '/partials/main/product/product', controller:'productCtrl',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -54,9 +58,9 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/course', {templateUrl: '/partials/main/course/course', controller:'courseCtrl',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -65,10 +69,10 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         //.when('/course/:id', {templateUrl: '/partials/main/course/courseshow', controller:'showCourse'})
         .when('/add/course', {templateUrl: '/partials/main/course/addcourse', controller:'addCourse',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -77,9 +81,9 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/course/:id/edit', {templateUrl: '/partials/main/course/addcourse', controller:'addCourse',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -88,9 +92,9 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/custom', {templateUrl: '/partials/main/custom/custom', controller:'customCtrl',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -99,9 +103,9 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/pagination', {templateUrl: '/partials/main/course/coursepagination', controller:'coursePager',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -110,9 +114,9 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/profile', {templateUrl: '/partials/main/profile/profile', controller:'profileCtrl',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -121,9 +125,9 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/search', {templateUrl: '/partials/main/search/search', controller:'searchCtrl',
-                resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
+                /*resolve: { auth: ["$q", "Auth", function($q, Auth, $location) {
                       var userInfo = Auth.currentUserDetails;
                       if (userInfo) {
                         return $q.when(userInfo);
@@ -132,7 +136,7 @@ angular.module('myApp', ['ngCookies', 'angular-loading-bar', 'ngStorage','ngReso
                        return $q.reject({ authenticated: false });
                       }
                     }]
-                }})
+                }*/})
         .when('/jan2016', {templateUrl:'/partials/main/jan2016/jan2016', controller: 'janCtrl'})
         .otherwise({redirectTo: "/" });
         

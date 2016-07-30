@@ -4,11 +4,15 @@
     /*global angular*/
 angular.module('myApp')
     .controller('janCtrl', ['$scope', function($scope, $q){
-        $scope.place = {};
+        $scope.place = {
+            name: '',
+            lat: '',
+            lng: ''
+        };
         function initMap() {
-            var latLong = {lat:13.067439 , lng:80.237617 };
+            var latLong = {lat:12.9592 , lng:77.6974 };
             var mapOptions = {
-                    center: new google.maps.LatLng(13.067439, 80.237617),
+                    center: new google.maps.LatLng(12.9592, 77.6974),
                     zoom: 12,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     scrollwheel: true
@@ -18,7 +22,7 @@ angular.module('myApp')
             var marker = new google.maps.Marker({
                 position: latLong,
                 map: map,
-                title: 'Hello Chennai!'
+                title: 'Current Location'
             });
             var geocoder = new google.maps.Geocoder();
         

@@ -1,7 +1,7 @@
 nav.menu-bar.navbar-inverse(ng-controller="menuCtrl")
   div.container-fluid
     div.navbar-header
-      a.navbar-brand(href="#") Angular Js
+      a.navbar-brand(href="/") Angular Js
     div
       ul.nav.navbar-nav
         li(ng-repeat="menu in menus", ng-class="{active : isActive(menu.url)}", ng-if="identity.isAuthenticated()")

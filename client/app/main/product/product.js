@@ -57,9 +57,9 @@ angular.module('myApp').controller('productCtrl', function($http, $scope, Upload
             console.log(response);
             $scope.products.unshift(response);
             $scope.productName = '';
-            $scope.productId= '';
-            $scope.desc= '';
-            $scope.price= '';
+            $scope.productId = '';
+            $scope.desc = '';
+            $scope.price = '';
             $scope.files = '';
         });
     };

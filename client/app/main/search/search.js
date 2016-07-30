@@ -91,21 +91,19 @@ angular.module('myApp')
         require : 'ngModel',
         link : function(scope, elem, attrs){
             elem.bind('keyup', function(){
-               if(elem.val().length >= 1){
-                   console.log(elem.val());
-                 
+               if(elem.val().length >=3){
                   users.searchUser({q: elem.val()}).$promise.then(function (response) {
                     if(response.length > 0){  
                         elem.css('color', '#330000');
                         elem.css( 'background-color', '#47d147');
-                        scope.emails = response;
-                       //console.log(response);
+                        if(response.length>0){
+                           scope.emails = response; 
+                        }
                     }
                     else{
                         elem.css('color', '#330000');
                         elem.css( 'background-color', '#e63900');
                         elem.append('<button>Clear</button>');
-                       // console.log(response.data);
                      }  
                    });
                }else{
